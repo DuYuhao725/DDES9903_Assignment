@@ -1526,6 +1526,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Stairs_650_400_300_Mesh
       objectReference: {fileID: 0}
+    - target: {fileID: 6533389204196290475, guid: 7e0223e1d3e1733499accfa5ebffb67e, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: f7133b1b8cc03dd449e81e13ac66591b, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:
