@@ -7306,7 +7306,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 'Last train departs at 12:00 AM.
+  m_text: 'Last train departs soon.
 
     Please proceed to Platform 1.'
   m_isRightToLeft: 0
