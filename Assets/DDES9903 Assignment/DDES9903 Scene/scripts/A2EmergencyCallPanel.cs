@@ -20,7 +20,6 @@ public class A2EmergencyCallPanel : MonoBehaviour
     [Header("Audio")]
     public AudioSource callAudio;
 
-    private bool playerInside = false;
     private bool used = false;
 
     private void Start()
@@ -29,7 +28,7 @@ public class A2EmergencyCallPanel : MonoBehaviour
 
         if (panelText != null)
         {
-            panelText.text = "EMERGENCY CALL PANEL\nPress E to send rescue signal";
+            panelText.text = "EMERGENCY CALL PANEL\nAutomatic rescue sensor";
         }
 
         if (statusLightRenderer != null && inactiveMaterial != null)
@@ -43,14 +42,6 @@ public class A2EmergencyCallPanel : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        if (playerInside && !used && Input.GetKeyDown(KeyCode.E))
-        {
-            SendEmergencySignal();
-        }
-    }
-
     private void OnTriggerEnter(Collider other)
     {
         if (used)
@@ -60,25 +51,7 @@ public class A2EmergencyCallPanel : MonoBehaviour
 
         if (other.CompareTag("Player") || other.GetComponentInParent<CharacterController>() != null)
         {
-            playerInside = true;
-
-            if (storyText != null)
-            {
-                storyText.text = "Press E to send an emergency signal.";
-            }
-        }
-    }
-
-    private void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("Player") || other.GetComponentInParent<CharacterController>() != null)
-        {
-            playerInside = false;
-
-            if (!used && storyText != null)
-            {
-                storyText.text = "You are inside the emergency service tunnel.\nFind the rescue point.";
-            }
+            SendEmergencySignal();
         }
     }
 
@@ -89,7 +62,7 @@ public class A2EmergencyCallPanel : MonoBehaviour
 
         if (storyText != null)
         {
-            storyText.text = "Emergency signal sent.\nRescue team has received your location.";
+            storyText.text = "Emergency signal sent automatically.\nRescue team has received your location.";
         }
 
         if (panelText != null)
@@ -112,6 +85,6 @@ public class A2EmergencyCallPanel : MonoBehaviour
             callAudio.Play();
         }
 
-        Debug.Log("Emergency signal sent.");
+        Debug.Log("Emergency signal sent automatically.");
     }
 }
